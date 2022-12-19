@@ -72,7 +72,7 @@ class WelcomeVC: BaseVC {
         stackView.alignment = .fill
         stackView.axis = .vertical
         stackView.spacing = 8
-        stackView.isUserInteractionEnabled = false
+        stackView.isUserInteractionEnabled = true
         return stackView
     }()
     
@@ -83,7 +83,6 @@ class WelcomeVC: BaseVC {
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         button.backgroundColor = .mainGreen
         button.layer.cornerRadius = 6
-        button.height = 56
         button.addTarget(self, action: #selector(submitButtonClicked), for: .touchUpInside)
         return button
     }()
@@ -103,7 +102,7 @@ class WelcomeVC: BaseVC {
         stackView.alignment = .fill
         stackView.axis = .vertical
         stackView.spacing = 8
-        stackView.isUserInteractionEnabled = false
+        stackView.isUserInteractionEnabled = true
         return stackView
     }()
     
