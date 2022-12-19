@@ -145,7 +145,7 @@ final class TextFieldView: UIView {
                 infoLabel.textColor = isError ? errorColor : infoColor
                 bodyView.setupBorder(width: isError ? 1 : 0, color: isError ? errorColor : .clear)
             }
-            iconView.image = isError ? #imageLiteral(resourceName: "error-icon") : nil
+            iconView.image = isError ? #imageLiteral(resourceName: "error_icon") : nil
             textFieldTrailingConstraint.constant = isError ? -48 : -16
         }
     }

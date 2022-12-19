@@ -544,6 +544,33 @@ extension UIViewController {
         }
         presentVC(alert, animated: true)
     }
+    func showMessage(_ message: String) {
+        let alertController = UIAlertController(title: message, message: "", preferredStyle: UIAlertController.Style.alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        alertController.view.tintColor = UIColor.mainGreen
+        presentVC(alertController, animated: true, completion: nil)
+    }
+    
+    func showMessage(_ message: String, handler: ((UIAlertAction) -> Void)?) {
+        let alertController = UIAlertController(title: message, message: "", preferredStyle: UIAlertController.Style.alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: handler))
+        alertController.view.tintColor = UIColor.mainGreen
+        presentVC(alertController, animated: true, completion: nil)
+    }
+    
+    func showMessage(_ title: String, _ message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        alertController.view.tintColor = UIColor.mainGreen
+        presentVC(alertController, animated: true, completion: nil)
+    }
+    
+    func showMessage(_ title: String, _ message: String, handler: ((UIAlertAction) -> Void)?) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: handler))
+        alertController.view.tintColor = UIColor.mainGreen
+        presentVC(alertController, animated: true, completion: nil)
+    }
 }
 extension Float {
     func rounded(toPlaces places:Int) -> Float {

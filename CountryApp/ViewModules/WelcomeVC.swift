@@ -45,8 +45,9 @@ class WelcomeVC: BaseVC {
     }()
     
     lazy var emailField: TextFieldView = {
-        let view = TextFieldView(placeholder: "Email")
+        let view = TextFieldView(placeholder: "E-mail")
         view.infoActive = "Enter your e-mail"
+        view.error = "* Please check your e-mail"
         view.textField.keyboardType = .emailAddress
         view.delegate = self
         view.textField.becomeFirstResponder()
@@ -159,10 +160,10 @@ class WelcomeVC: BaseVC {
         
     }
     @objc func submitButtonClicked() {
-        print("submitButtonClicked")
+        showMessage("submitButtonClicked")
     }
     @objc func registerButtonClicked() {
-        print("registerButtonClicked")
+        showMessage("registerButtonClicked")
     }
     
 }
@@ -172,6 +173,22 @@ extension WelcomeVC: TextFieldViewDelegate, UITextFieldDelegate {
     }
     
     func textFieldViewDidEndEditing(_ textFieldView: TextFieldView) {
+        switch textFieldView {
+        case emailField:
+            if textFieldView.text!.isEmpty || !textFieldView.text!.isEmail {
+                textFieldView.isError = true
+            } else {
+                textFieldView.isError = false
+            }
+        case passwordField:
+            if textFieldView.text!.isEmpty{
+                textFieldView.isError = true
+            } else {
+                textFieldView.isError = false
+            }
+        default:
+            break
+        }
         print("textFieldViewDidEndEditing")
     }
     
