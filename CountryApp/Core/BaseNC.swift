@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  BaseNC.swift
 //  CountryApp
 //
 //  Created by Fagan Aslanli on 19.12.22.
@@ -7,13 +7,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class BaseNC: UINavigationController {
 
+    var onFinish: (() -> ())?
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        setNavigationBarHidden(true, animated: false)
     }
-
-
 }
-
