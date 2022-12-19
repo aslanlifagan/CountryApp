@@ -19,6 +19,7 @@
 		CDF353862950D7A7009DEDFD /* UIView+Customs.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF353852950D7A7009DEDFD /* UIView+Customs.swift */; };
 		CDF353882950DDA3009DEDFD /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF353872950DDA3009DEDFD /* Color.swift */; };
 		CDF3538A2950EB6F009DEDFD /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF353892950EB6F009DEDFD /* UIView+Extensions.swift */; };
+		CDF3538C2950F5FF009DEDFD /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF3538B2950F5FF009DEDFD /* TextFieldView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		CDF353852950D7A7009DEDFD /* UIView+Customs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Customs.swift"; sourceTree = "<group>"; };
 		CDF353872950DDA3009DEDFD /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		CDF353892950EB6F009DEDFD /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		CDF3538B2950F5FF009DEDFD /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 		CDF3537C2950CF1D009DEDFD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CDF3538B2950F5FF009DEDFD /* TextFieldView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 			files = (
 				CDF353842950D282009DEDFD /* Extension.swift in Sources */,
 				CDF353822950D01D009DEDFD /* WelcomeVM.swift in Sources */,
+				CDF3538C2950F5FF009DEDFD /* TextFieldView.swift in Sources */,
 				CDF353862950D7A7009DEDFD /* UIView+Customs.swift in Sources */,
 				CDF353882950DDA3009DEDFD /* Color.swift in Sources */,
 				CDF353772950CC2E009DEDFD /* DefaultsStorage.swift in Sources */,
