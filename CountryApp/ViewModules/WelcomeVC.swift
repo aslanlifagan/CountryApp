@@ -124,29 +124,33 @@ class WelcomeVC: BaseVC {
     }
     override func setupAnchors() {
         super.setupAnchors()
+        
         scrollView.anchor(top: view.topAnchor,
                           leading: view.leadingAnchor,
                           bottom: view.bottomAnchor,
                           trailing: view.trailingAnchor)
+        
         contentView.fillSuperview()
+        
         contentView.anchorWidth(to: self.view)
+        
         leftSideView.anchorSuperview(top: true,
                                      leading: true,
-                                     padding: .init(top: -48,
-                                                    leading: 0),
+                                     padding: .init(top: -48,leading: 0),
                                      size: .init(
                                         width: UIScreen.main.bounds.width*0.6,
                                         height: UIScreen.main.bounds.height*0.4))
         rightSideView.anchorSuperview(top: true,
                                      trailing: true,
-                                     padding: .init(top: -48,
-                                                    trailing: 0),
+                                     padding: .init(top: -48,trailing: 0),
                                      size: .init(
                                         width: UIScreen.main.bounds.width*0.6,
                                         height: UIScreen.main.bounds.height*0.35))
         
         titleLabel.centerYToSuperview()
+        
         titleLabel.anchor(leading: leftSideView.leadingAnchor, padding: .init(leading: 8))
+        
         fieldStackView.anchor(top: leftSideView.bottomAnchor,
                          leading: contentView.leadingAnchor,
                               bottom: contentView.bottomAnchor,
@@ -155,8 +159,15 @@ class WelcomeVC: BaseVC {
                                         leading: 24,
                                         bottom: -24,
                                         trailing: -24))
+        
         submitButton.anchorSize(.init(width: 0, height: 56))
-        buttonStackView.anchor( leading: view.leadingAnchor, bottom: view.layoutMarginsGuide.bottomAnchor, trailing: view.trailingAnchor, padding: .init(leading: 24, bottom: 0, trailing: -24))
+        
+        buttonStackView.anchor( leading: view.leadingAnchor,
+                                bottom: view.layoutMarginsGuide.bottomAnchor,
+                                trailing: view.trailingAnchor,
+                                padding: .init(leading: 24,
+                                               bottom: 0,
+                                               trailing: -24))
         
     }
     @objc func submitButtonClicked() {
