@@ -35,8 +35,8 @@ class WelcomeVC: BaseVC {
     }()
     
     lazy var titleLabel: UILabel = {
-       let label = UILabel()
-        label.text = "Welcome\nmy World"
+        let label = UILabel()
+        label.text = "Welcome..."
         label.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
         label.textAlignment = .left
         label.textColor = .white
@@ -50,7 +50,6 @@ class WelcomeVC: BaseVC {
         view.error = "* Please check your e-mail"
         view.textField.keyboardType = .emailAddress
         view.delegate = self
-        view.textField.becomeFirstResponder()
         return view
     }()
     
@@ -77,24 +76,27 @@ class WelcomeVC: BaseVC {
         return stackView
     }()
     
-    lazy var submitButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Sign in", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        button.backgroundColor = .mainGreen
-        button.layer.cornerRadius = 6
-        button.addTarget(self, action: #selector(submitButtonClicked), for: .touchUpInside)
+    lazy var submitButton: SubmitButton = {
+        let button = SubmitButton()
+        button.bgColor = .mainGreen
+        button.titleColor = .white
+        button.title = "Sign In"
+        button.click = { [weak self] in
+            guard let self = self else {return}
+            self.submitButtonClicked()
+        }
         return button
     }()
     
-    lazy var registerButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Not Registered ?", for: .normal)
-        button.setTitleColor(UIColor.label, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
-        button.backgroundColor = .clear
-        button.addTarget(self, action: #selector(registerButtonClicked), for: .touchUpInside)
+    lazy var registerButton: SubmitButton = {
+        let button = SubmitButton()
+        button.bgColor = .clear
+        button.titleColor = .black
+        button.title = "Not Registered ?"
+        button.click = { [weak self] in
+            guard let self = self else {return}
+            self.registerButtonClicked()
+        }
         return button
     }()
     
@@ -109,15 +111,13 @@ class WelcomeVC: BaseVC {
     
     override func setupView() {
         super.setupView()
-        view.backgroundColor = .systemGray4
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(leftSideView)
         contentView.addSubview(rightSideView)
         leftSideView.addSubview(titleLabel)
         contentView.addSubview(fieldStackView)
-        view.addSubview(buttonStackView)
-
+        contentView.addSubview(buttonStackView)
     }
     override func setupLabels() {
         super.setupLabels()
@@ -129,50 +129,48 @@ class WelcomeVC: BaseVC {
                           leading: view.leadingAnchor,
                           bottom: view.bottomAnchor,
                           trailing: view.trailingAnchor)
-        
         contentView.fillSuperview()
-        
         contentView.anchorWidth(to: self.view)
-        
         leftSideView.anchorSuperview(top: true,
                                      leading: true,
-                                     padding: .init(top: -48,leading: 0),
-                                     size: .init(
-                                        width: UIScreen.main.bounds.width*0.6,
-                                        height: UIScreen.main.bounds.height*0.4))
+                                     padding: .init(top: -64,leading: 0),
+                                     size: .init(width: UIScreen.main.bounds.width*0.6,height: UIScreen.main.bounds.height*0.4))
         rightSideView.anchorSuperview(top: true,
-                                     trailing: true,
-                                     padding: .init(top: -48,trailing: 0),
-                                     size: .init(
-                                        width: UIScreen.main.bounds.width*0.6,
-                                        height: UIScreen.main.bounds.height*0.35))
-        
+                                      trailing: true,
+                                      padding: .init(top: -64,trailing: 0),
+                                      size: .init(width: UIScreen.main.bounds.width*0.6,height: UIScreen.main.bounds.height*0.35))
         titleLabel.centerYToSuperview()
-        
         titleLabel.anchor(leading: leftSideView.leadingAnchor, padding: .init(leading: 8))
-        
         fieldStackView.anchor(top: leftSideView.bottomAnchor,
-                         leading: contentView.leadingAnchor,
+                              leading: contentView.leadingAnchor,
                               bottom: contentView.bottomAnchor,
-                         trailing: contentView.trailingAnchor,
-                         padding: .init(top: 24,
-                                        leading: 24,
-                                        bottom: -24,
-                                        trailing: -24))
-        
+                              trailing: contentView.trailingAnchor,
+                              padding: .init(top: 24,leading: 24,bottom: -24,trailing: -24))
         submitButton.anchorSize(.init(width: 0, height: 56))
-        
-        buttonStackView.anchor( leading: view.leadingAnchor,
-                                bottom: view.layoutMarginsGuide.bottomAnchor,
-                                trailing: view.trailingAnchor,
-                                padding: .init(leading: 24,
-                                               bottom: 0,
-                                               trailing: -24))
-        
+        buttonStackView.anchor(leading: view.leadingAnchor,
+                               bottom: view.layoutMarginsGuide.bottomAnchor,
+                               trailing: view.trailingAnchor,
+                               padding: .init(leading: 24,bottom: 0,trailing: -24))
     }
+    
     @objc func submitButtonClicked() {
-        showMessage("submitButtonClicked")
+        let  usern = emailField.text ?? "", pass = passwordField.text ?? ""
+        
+        if usern.isEmpty {
+            showMessage("Username is required")
+            return
+        }
+        if pass.isEmpty {
+            showMessage("Pass is required")
+            return
+        }
+        let body:[String: Any] = [
+            "username": usern,
+            "password": pass
+        ]
+        print("body:",body)
     }
+    
     @objc func registerButtonClicked() {
         showMessage("registerButtonClicked")
     }
@@ -180,10 +178,10 @@ class WelcomeVC: BaseVC {
 }
 extension WelcomeVC: TextFieldViewDelegate, UITextFieldDelegate {
     func textFieldViewDidBeginEditing(_ textFieldView: TextFieldView) {
-        print("textFieldViewDidBeginEditing")
     }
-    
     func textFieldViewDidEndEditing(_ textFieldView: TextFieldView) {
+    }
+    func textFieldViewChangedEditing(_ textFieldView: TextFieldView) {
         switch textFieldView {
         case emailField:
             if textFieldView.text!.isEmpty || !textFieldView.text!.isEmail {
@@ -192,7 +190,7 @@ extension WelcomeVC: TextFieldViewDelegate, UITextFieldDelegate {
                 textFieldView.isError = false
             }
         case passwordField:
-            if textFieldView.text!.isEmpty{
+            if textFieldView.text!.isEmpty || !textFieldView.validationStatus {
                 textFieldView.isError = true
             } else {
                 textFieldView.isError = false
@@ -200,10 +198,5 @@ extension WelcomeVC: TextFieldViewDelegate, UITextFieldDelegate {
         default:
             break
         }
-        print("textFieldViewDidEndEditing")
-    }
-    
-    func textFieldViewChangedEditing(_ textFieldView: TextFieldView) {
-        print("textFieldViewChangedEditing")
     }
 }
