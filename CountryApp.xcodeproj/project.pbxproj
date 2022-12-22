@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		CD66EA1C2954EFAA000956C8 /* SubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD66EA1B2954EFAA000956C8 /* SubmitButton.swift */; };
+		CD66EA1F2954FEE6000956C8 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD66EA1E2954FEE6000956C8 /* RegisterVC.swift */; };
+		CD66EA212955062A000956C8 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD66EA202955062A000956C8 /* NavigationBarView.swift */; };
+		CD66EA2329550B1E000956C8 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD66EA2229550B1E000956C8 /* UIImage+Extensions.swift */; };
 		CDF3535A2950C920009DEDFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF353592950C920009DEDFD /* AppDelegate.swift */; };
 		CDF353632950C922009DEDFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDF353622950C922009DEDFD /* Assets.xcassets */; };
 		CDF3536E2950C970009DEDFD /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF3536D2950C970009DEDFD /* BaseVC.swift */; };
@@ -15,7 +18,7 @@
 		CDF353772950CC2E009DEDFD /* DefaultsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF353762950CC2E009DEDFD /* DefaultsStorage.swift */; };
 		CDF353792950CC65009DEDFD /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF353782950CC65009DEDFD /* Constant.swift */; };
 		CDF3537B2950CF16009DEDFD /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF3537A2950CF16009DEDFD /* WelcomeVC.swift */; };
-		CDF353822950D01D009DEDFD /* WelcomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF353812950D01D009DEDFD /* WelcomeVM.swift */; };
+		CDF353822950D01D009DEDFD /* AuthVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF353812950D01D009DEDFD /* AuthVM.swift */; };
 		CDF353842950D282009DEDFD /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF353832950D282009DEDFD /* Extension.swift */; };
 		CDF353862950D7A7009DEDFD /* UIView+Customs.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF353852950D7A7009DEDFD /* UIView+Customs.swift */; };
 		CDF353882950DDA3009DEDFD /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF353872950DDA3009DEDFD /* Color.swift */; };
@@ -25,6 +28,9 @@
 
 /* Begin PBXFileReference section */
 		CD66EA1B2954EFAA000956C8 /* SubmitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitButton.swift; sourceTree = "<group>"; };
+		CD66EA1E2954FEE6000956C8 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		CD66EA202955062A000956C8 /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
+		CD66EA2229550B1E000956C8 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		CDF353562950C920009DEDFD /* CountryApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountryApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDF353592950C920009DEDFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDF353622950C922009DEDFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -34,7 +40,7 @@
 		CDF353762950CC2E009DEDFD /* DefaultsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsStorage.swift; sourceTree = "<group>"; };
 		CDF353782950CC65009DEDFD /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		CDF3537A2950CF16009DEDFD /* WelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
-		CDF353812950D01D009DEDFD /* WelcomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVM.swift; sourceTree = "<group>"; };
+		CDF353812950D01D009DEDFD /* AuthVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVM.swift; sourceTree = "<group>"; };
 		CDF353832950D282009DEDFD /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		CDF353852950D7A7009DEDFD /* UIView+Customs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Customs.swift"; sourceTree = "<group>"; };
 		CDF353872950DDA3009DEDFD /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -53,6 +59,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CD66EA1D2954FEB3000956C8 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				CDF3537A2950CF16009DEDFD /* WelcomeVC.swift */,
+				CD66EA1E2954FEE6000956C8 /* RegisterVC.swift */,
+				CDF353812950D01D009DEDFD /* AuthVM.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		CDF3534D2950C920009DEDFD = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +123,7 @@
 			children = (
 				CDF353762950CC2E009DEDFD /* DefaultsStorage.swift */,
 				CDF353832950D282009DEDFD /* Extension.swift */,
+				CD66EA2229550B1E000956C8 /* UIImage+Extensions.swift */,
 				CDF353852950D7A7009DEDFD /* UIView+Customs.swift */,
 				CDF353892950EB6F009DEDFD /* UIView+Extensions.swift */,
 				CDF353782950CC65009DEDFD /* Constant.swift */,
@@ -119,6 +136,7 @@
 			children = (
 				CDF3538B2950F5FF009DEDFD /* TextFieldView.swift */,
 				CD66EA1B2954EFAA000956C8 /* SubmitButton.swift */,
+				CD66EA202955062A000956C8 /* NavigationBarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -133,8 +151,7 @@
 		CDF3537E2950CF7A009DEDFD /* ViewModules */ = {
 			isa = PBXGroup;
 			children = (
-				CDF3537A2950CF16009DEDFD /* WelcomeVC.swift */,
-				CDF353812950D01D009DEDFD /* WelcomeVM.swift */,
+				CD66EA1D2954FEB3000956C8 /* Auth */,
 			);
 			path = ViewModules;
 			sourceTree = "<group>";
@@ -209,7 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDF353842950D282009DEDFD /* Extension.swift in Sources */,
-				CDF353822950D01D009DEDFD /* WelcomeVM.swift in Sources */,
+				CDF353822950D01D009DEDFD /* AuthVM.swift in Sources */,
 				CDF3538C2950F5FF009DEDFD /* TextFieldView.swift in Sources */,
 				CDF353862950D7A7009DEDFD /* UIView+Customs.swift in Sources */,
 				CDF353882950DDA3009DEDFD /* Color.swift in Sources */,
@@ -219,8 +236,11 @@
 				CD66EA1C2954EFAA000956C8 /* SubmitButton.swift in Sources */,
 				CDF353742950CB9C009DEDFD /* BaseNC.swift in Sources */,
 				CDF3537B2950CF16009DEDFD /* WelcomeVC.swift in Sources */,
+				CD66EA1F2954FEE6000956C8 /* RegisterVC.swift in Sources */,
 				CDF353792950CC65009DEDFD /* Constant.swift in Sources */,
 				CDF3538A2950EB6F009DEDFD /* UIView+Extensions.swift in Sources */,
+				CD66EA212955062A000956C8 /* NavigationBarView.swift in Sources */,
+				CD66EA2329550B1E000956C8 /* UIImage+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

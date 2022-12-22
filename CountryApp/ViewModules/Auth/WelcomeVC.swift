@@ -105,7 +105,6 @@ class WelcomeVC: BaseVC {
         stackView.alignment = .fill
         stackView.axis = .vertical
         stackView.spacing = 8
-        stackView.isUserInteractionEnabled = true
         return stackView
     }()
     
@@ -117,7 +116,7 @@ class WelcomeVC: BaseVC {
         contentView.addSubview(rightSideView)
         leftSideView.addSubview(titleLabel)
         contentView.addSubview(fieldStackView)
-        contentView.addSubview(buttonStackView)
+        view.addSubview(buttonStackView)
     }
     override func setupLabels() {
         super.setupLabels()
@@ -172,7 +171,9 @@ class WelcomeVC: BaseVC {
     }
     
     @objc func registerButtonClicked() {
-        showMessage("registerButtonClicked")
+        let controller = RegisterVC()
+        controller.hidesBottomBarWhenPushed = true
+        pushVC(controller, animated: true)
     }
     
 }
