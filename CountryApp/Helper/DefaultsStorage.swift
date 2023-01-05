@@ -87,18 +87,7 @@ class DefaultsStorage {
         let entity = try? JSONDecoder().decode(T.self, from: data)
         return entity
     }
-    
-    // MARK: Dict
-    class func set(dict: [String: Any]?, by key: DefaultsStorageKey) {
-        guard let dict = dict else {return}
-        UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: dict), forKey: key.rawValue)
-    }
-    
-    class func get(by key: DefaultsStorageKey) -> [String: Any]? {
-        guard let data = UserDefaults.standard.object(forKey: key.rawValue) as? Data,
-        let dict = NSKeyedUnarchiver.unarchiveObject(with: data) as? [String: Any] else { return nil }
-        return dict
-    }
+
     
     // MARK: - Delete
     class func delete(by key: DefaultsStorageKey) {

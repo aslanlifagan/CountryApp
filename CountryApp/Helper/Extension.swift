@@ -97,7 +97,7 @@ extension UITableView {
     func setAdditionalLoadingIndicator(visible: Bool) {
         DispatchQueue.main.async {
             if visible {
-                let indicator = UIActivityIndicatorView(style: .gray)
+                let indicator = UIActivityIndicatorView(style: .medium)
                 indicator.frame.size.height = 64
                 indicator.frame.size.width = self.bounds.width
                 self.tableFooterView = indicator
@@ -233,7 +233,7 @@ extension Date {
         return Int64(self.timeIntervalSince1970 * 1000)
     }
     static func time(since fromDate: Date) -> String {
-//        guard fromDate < Date() else { return "Back to the future" }
+        //        guard fromDate < Date() else { return "Back to the future" }
         
         let allComponents: Set<Calendar.Component> = [.second, .minute, .hour, .day, .weekOfYear, .month, .year]
         let components:DateComponents = Calendar.current.dateComponents(allComponents, from: fromDate, to: Date())
@@ -343,7 +343,7 @@ extension URL {
         let fileManager = FileManager.default
         // Get document directory for device, this should succeed
         if let documentDirectory = fileManager.urls(for: .documentDirectory,
-                                                       in: .userDomainMask).first {
+                                                    in: .userDomainMask).first {
             // Construct a URL with desired folder name
             let folderURL = documentDirectory.appendingPathComponent(folderName)
             // If folder URL does not exist, create it
@@ -419,8 +419,8 @@ extension UIView {
             })
         }
     }
-
-
+    
+    
     /**
      * Function for changing visibility with animation (show with animation or hide with animation)
      */
@@ -503,7 +503,7 @@ extension UIViewController {
      */
     func presentVC(_ screen: UIViewController, animated: Bool, completion: (() -> Void)? = nil) {
         DispatchQueue.main.async {
-//            self.hideLoading()
+            //            self.hideLoading()
             self.view.endEditing(true)
             self.present(screen, animated: animated, completion: completion)
         }
@@ -529,7 +529,7 @@ extension UIViewController {
             self.navigationController?.popViewController(animated: animated)
         }
     }
-
+    
     func showConfirmationAlert(
         title: String = "confirmation_alert_title", message: String = "confirmation_alert_description",
         confirmTitle: String = "confirmation_alert_confirm_button_title", cancelTitle: String = "confirmation_alert_cancel_button_title",
@@ -571,6 +571,28 @@ extension UIViewController {
         alertController.view.tintColor = UIColor.mainGreen
         presentVC(alertController, animated: true, completion: nil)
     }
+    static var activityIndicatorTag = 12345
+
+    func startLoading() {
+        let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+        activityIndicator.tag = UIViewController.activityIndicatorTag
+        activityIndicator.center = view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = .medium
+        
+        DispatchQueue.main.async {
+            self.view.addSubview(activityIndicator)
+            activityIndicator.startAnimating()
+        }
+    }
+    
+    func stopLoading() {
+        let activityIndicator = view.viewWithTag(UIViewController.activityIndicatorTag) as? UIActivityIndicatorView
+        DispatchQueue.main.async {
+            activityIndicator?.stopAnimating()
+            activityIndicator?.removeFromSuperview()
+        }
+    }
 }
 extension Float {
     func rounded(toPlaces places:Int) -> Float {
@@ -609,9 +631,9 @@ extension String {
     /**
      * Function for setting up variables localized
      */
-//    func localized(with arguments: [CVarArg]) -> String {
-//        return String(format: self.localized(), locale: nil, arguments: arguments)
-//    }
+    //    func localized(with arguments: [CVarArg]) -> String {
+    //        return String(format: self.localized(), locale: nil, arguments: arguments)
+    //    }
     /**
      * Function for checking string is email or not
      */
@@ -677,17 +699,17 @@ extension String {
         return pureNumber
     }
     
-//    func formatedDate(showTime: Bool = false) -> String? {
-//        var format = "dd MMM yyyy"
-//        if showTime {
-//            format += " HH:mm"
-//        }
-//        return toDate()?.toString(.custom(format))
-//    }
-//    
-//    func formatedTime() -> String? {
-//        return toDate()?.toString(.custom("HH:mm"))
-//    }
+    //    func formatedDate(showTime: Bool = false) -> String? {
+    //        var format = "dd MMM yyyy"
+    //        if showTime {
+    //            format += " HH:mm"
+    //        }
+    //        return toDate()?.toString(.custom(format))
+    //    }
+    //
+    //    func formatedTime() -> String? {
+    //        return toDate()?.toString(.custom("HH:mm"))
+    //    }
     
     func toJson<T: Decodable>() -> T? {
         guard let jsonData = data(using: String.Encoding.utf8) else {return nil}

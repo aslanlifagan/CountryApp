@@ -49,7 +49,7 @@ class WelcomeVC: BaseVC {
         view.infoActive = "Enter your e-mail"
         view.error = "* Please check your e-mail"
         view.textField.keyboardType = .emailAddress
-        view.text = DefaultsStorage.getUser()?.email
+//        view.text = DefaultsStorage.getUser()?.email
         view.delegate = self
         return view
     }()
@@ -65,7 +65,7 @@ class WelcomeVC: BaseVC {
         view.textField.delegate = self
         view.textField.returnKeyType = UIReturnKeyType.done
         view.textField.enablesReturnKeyAutomatically = true
-        view.text = DefaultsStorage.getUser()?.password
+//        view.text = DefaultsStorage.getUser()?.password
         return view
     }()
     
