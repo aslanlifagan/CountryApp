@@ -6,74 +6,102 @@
 //
 
 import Foundation
+import UIKit
 
-final class DefaultsStorage {
+enum DefaultsStorageKey: String {
+    case UD_KEY_LOGIN = "login"
+    case UD_KEY_SESSION = "session"
+    case UD_KEY_USER = "user"
+    case UD_KEY_USER_ID = "user_id"
+    case UD_KEY_USERNAME = "username"
+    case UD_KEY_PASSCODE = "passcode"
+    case UD_KEY_UNLOCK_TOUCH_ID = "unlock_touch_id"
+    case UD_KEY_UNLOCK_FACE_ID = "unlock_face_id"
+
+    case UD_KEY_FCM_TOKEN = "fcm_token"
+    case UD_KEY_PUSH_NOTIFICATION = "push_notification"
+    case UD_KEY_PUSH_DATA = "push_data"
+
+}
+
+class DefaultsStorage {
     
-    static let defaults = UserDefaults.standard
-    
-    // MARK: Setters
-    
-    static func setObject(key: String, value: AnyObject) {
-        defaults.set(value, forKey: key)
-        defaults.synchronize()
+    // MARK: - String
+    class func set(string: String, by key: DefaultsStorageKey) {
+        UserDefaults.standard.set(string, forKey: key.rawValue)
     }
     
-    static func setString(key: String, value: String) {
-        defaults.set(value, forKey: key)
-        defaults.synchronize()
+    class func getString(by key: DefaultsStorageKey) -> String {
+        return UserDefaults.standard.string(forKey: key.rawValue) ?? ""
     }
     
-    static func setInteger(key: String, value: Int) {
-        defaults.set(value, forKey: key)
-        defaults.synchronize()
+    // MARK: - Int
+    class func set(int: Int, by key: DefaultsStorageKey) {
+        UserDefaults.standard.set(int, forKey: key.rawValue)
     }
     
-    static func setDouble(key: String, value: Double) {
-        defaults.set(value, forKey: key)
-        defaults.synchronize()
+    class func getInteger(by key: DefaultsStorageKey) -> Int {
+        return UserDefaults.standard.integer(forKey: key.rawValue)
     }
     
-    static func setFloat(key: String, value: Float) {
-        defaults.set(value, forKey: key)
-        defaults.synchronize()
+    // MARK: - Float
+    class func set(float: Float, by key: DefaultsStorageKey) {
+        UserDefaults.standard.set(float, forKey: key.rawValue)
     }
     
-    static func setBool(key: String, value: Bool) {
-        defaults.set(value, forKey: key)
-        defaults.synchronize()
+    class func getFloat(by key: DefaultsStorageKey) -> Float {
+        return UserDefaults.standard.float(forKey: key.rawValue)
     }
     
-    
-    // MARK: Getters
-    
-    static func getObject(key: String) -> AnyObject? {
-        return defaults.object(forKey: key) as AnyObject?
+    // MARK: - Bool
+    class func set(bool: Bool, by key: DefaultsStorageKey) {
+        UserDefaults.standard.set(bool, forKey: key.rawValue)
     }
     
-    static func getString(key: String) -> String? {
-        return defaults.string(forKey: key)
+    class func getBool(by key: DefaultsStorageKey) -> Bool {
+        return UserDefaults.standard.bool(forKey: key.rawValue)
     }
     
-    static func getInteger(key: String) -> Int {
-        return defaults.integer(forKey: key)
+    // MARK: - User
+
+    class func getUser() -> User? {
+        if let user: User = DefaultsStorage.getEntity(by: .UD_KEY_USER) {
+            return user
+        }
+        return nil
+    }
+    class func setUser(user: User?) {
+//        setToken(token: user?.sessionToken ?? "")
+        DefaultsStorage.set(entity: user, by: .UD_KEY_USER)
     }
     
-    static func getDouble(key: String) -> Double {
-        return defaults.double(forKey: key)
+    // MARK: - Data
+    class func set<T: Codable>(entity: T, by key: DefaultsStorageKey) {
+        if let encoded = try? JSONEncoder().encode(entity) {
+            UserDefaults.standard.set(encoded, forKey: key.rawValue)
+        }
     }
     
-    static func getFloat(key: String) -> Float {
-        return defaults.float(forKey: key)
+    class func getEntity<T: Codable>(by key: DefaultsStorageKey) -> T? {
+        guard let data = UserDefaults.standard.value(forKey: key.rawValue) as? Data else { return nil }
+        let entity = try? JSONDecoder().decode(T.self, from: data)
+        return entity
     }
     
-    static func getBool(key: String) -> Bool {
-        return defaults.bool(forKey: key)
+    // MARK: Dict
+    class func set(dict: [String: Any]?, by key: DefaultsStorageKey) {
+        guard let dict = dict else {return}
+        UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: dict), forKey: key.rawValue)
     }
     
-    // MARK: Remover
+    class func get(by key: DefaultsStorageKey) -> [String: Any]? {
+        guard let data = UserDefaults.standard.object(forKey: key.rawValue) as? Data,
+        let dict = NSKeyedUnarchiver.unarchiveObject(with: data) as? [String: Any] else { return nil }
+        return dict
+    }
     
-    static func remove(key: String) {
-        defaults.removeObject(forKey: key)
-        defaults.synchronize()
+    // MARK: - Delete
+    class func delete(by key: DefaultsStorageKey) {
+        UserDefaults.standard.removeObject(forKey: key.rawValue)
     }
 }

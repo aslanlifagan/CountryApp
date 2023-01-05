@@ -49,6 +49,7 @@ class WelcomeVC: BaseVC {
         view.infoActive = "Enter your e-mail"
         view.error = "* Please check your e-mail"
         view.textField.keyboardType = .emailAddress
+        view.text = DefaultsStorage.getUser()?.email
         view.delegate = self
         return view
     }()
@@ -64,6 +65,7 @@ class WelcomeVC: BaseVC {
         view.textField.delegate = self
         view.textField.returnKeyType = UIReturnKeyType.done
         view.textField.enablesReturnKeyAutomatically = true
+        view.text = DefaultsStorage.getUser()?.password
         return view
     }()
     
@@ -153,9 +155,9 @@ class WelcomeVC: BaseVC {
     }
     
     @objc func submitButtonClicked() {
-        let  usern = emailField.text ?? "", pass = passwordField.text ?? ""
+        let  email = emailField.text ?? "", pass = passwordField.text ?? ""
         
-        if usern.isEmpty {
+        if email.isEmpty {
             showMessage("Username is required")
             return
         }
@@ -163,11 +165,16 @@ class WelcomeVC: BaseVC {
             showMessage("Pass is required")
             return
         }
-        let body:[String: Any] = [
-            "username": usern,
-            "password": pass
-        ]
-        print("body:",body)
+//        let body:[String: Any] = [
+//            "username": usern,
+//            "password": pass
+//        ]
+        if email == DefaultsStorage.getUser()?.email && pass == DefaultsStorage.getUser()?.password {
+            AppDelegate.shared.login()
+        } else {
+            showMessage("yes kimi")
+        }
+        
     }
     
     @objc func registerButtonClicked() {

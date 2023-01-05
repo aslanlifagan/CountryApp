@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD41D6232966CF85009CEDDA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD41D6222966CF84009CEDDA /* User.swift */; };
 		CD66EA1C2954EFAA000956C8 /* SubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD66EA1B2954EFAA000956C8 /* SubmitButton.swift */; };
 		CD66EA1F2954FEE6000956C8 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD66EA1E2954FEE6000956C8 /* RegisterVC.swift */; };
 		CD66EA212955062A000956C8 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD66EA202955062A000956C8 /* NavigationBarView.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CD41D6222966CF84009CEDDA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CD66EA1B2954EFAA000956C8 /* SubmitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitButton.swift; sourceTree = "<group>"; };
 		CD66EA1E2954FEE6000956C8 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		CD66EA202955062A000956C8 /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 		CDF3537D2950CF59009DEDFD /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CD41D6222966CF84009CEDDA /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				CD66EA1C2954EFAA000956C8 /* SubmitButton.swift in Sources */,
 				CDF353742950CB9C009DEDFD /* BaseNC.swift in Sources */,
 				CDF3537B2950CF16009DEDFD /* WelcomeVC.swift in Sources */,
+				CD41D6232966CF85009CEDDA /* User.swift in Sources */,
 				CD66EA1F2954FEE6000956C8 /* RegisterVC.swift in Sources */,
 				CDF353792950CC65009DEDFD /* Constant.swift in Sources */,
 				CDF3538A2950EB6F009DEDFD /* UIView+Extensions.swift in Sources */,

@@ -157,16 +157,17 @@ class RegisterVC: BaseVC {
             showMessage("Password is required")
             return
         }
-        let body:[String: Any] = [
-            "name": name,
-            "surname": surname,
-            "username": username,
-            "email": email,
-            "phone": phone,
-            "password": pass
-        ]
+//        let body:[String: Any] = [
+//            "name": name,
+//            "surname": surname,
+//            "username": username,
+//            "email": email,
+//            "phone": phone,
+//            "password": pass
+//        ]
+        let user =  User(name: name, surname: surname, username: username, email: email, phone: phone, password: pass)
+        DefaultsStorage.setUser(user: user)
         popVC(animated: true)
-        print("body:",body)
     }
 }
 extension RegisterVC: TextFieldViewDelegate, UITextFieldDelegate {
