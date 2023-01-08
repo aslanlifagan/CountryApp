@@ -17,6 +17,7 @@ class CountryVM {
             
             switch result {
             case .success(let list):
+                var sortedList  =  list?.sorted(by: { $0.area ?? 0.0 > $1.area ?? 0.0 })
                 self.countryList = list ?? Country()
                 self.successCallback?()
                 break

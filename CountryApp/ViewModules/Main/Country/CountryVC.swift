@@ -70,7 +70,6 @@ extension CountryVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(cellClass: CountryTableCell.self, forIndexPath: indexPath)
         cell.configureCell(item: viewModel.countryList[indexPath.row])
-//        cell.configureCell()
         return cell
     }
 }
