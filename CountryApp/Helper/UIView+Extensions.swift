@@ -245,7 +245,7 @@ public extension UIView {
             // Fallback on earlier versions
         }
     }
-    func roundBottomCorner(radius:CGFloat = 8){
+    func roundTopBottomCorner(radius:CGFloat = 8){
         self.clipsToBounds = true
         self.layer.cornerRadius = radius
         if #available(iOS 11.0, *) {

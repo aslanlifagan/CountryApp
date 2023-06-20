@@ -12,13 +12,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     var welcomeMainVC: BaseNC?
+    var mainVC: MainTabBarC?
+    
+    static let shared = UIApplication.shared.delegate as! AppDelegate
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        
-        if DefaultsStorage.getBool(key: UD_KEY_LOGIN) {
-//            self.passcodeVC = PasscodeVC()
-//            window?.rootViewController = self.passcodeVC
-//            window?.makeKeyAndVisible()
+        if DefaultsStorage.getBool(by: .UD_KEY_LOGIN) {
+            login()
         }
         else {
             self.welcomeMainVC = BaseNC(rootViewController: WelcomeVC())
@@ -31,16 +31,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Login & Logout
     
     func login() {
-        DefaultsStorage.setBool(key: UD_KEY_LOGOUT, value: false)
-        DefaultsStorage.setBool(key: UD_KEY_LOGIN, value: true)
-        
+        DefaultsStorage.set(bool: true, by: .UD_KEY_LOGIN)
         self.window?.rootViewController?.dismiss(animated: false, completion: nil)
         self.window?.rootViewController = nil
         
-//        self.mainVC = MainTabBarC()
-//        window?.rootViewController = self.mainVC
-//        window?.makeKeyAndVisible()
-    }
+        self.mainVC = MainTabBarC()
+        window?.rootViewController = self.mainVC
+        window?.makeKeyAndVisible()
+    }	
     
     func logout(_ force: Bool = true) {
         if force {
@@ -53,8 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            DefaultsStorage.remove(key: UD_KEY_UNLOCK_FACE_ID)
         }
         else {
-            DefaultsStorage.setBool(key: UD_KEY_LOGOUT, value: true)
-            DefaultsStorage.setBool(key: UD_KEY_LOGIN, value: false)
+            DefaultsStorage.set(bool: false, by: .UD_KEY_LOGIN)
         }
         
         self.window?.rootViewController?.dismiss(animated: false, completion: nil)
