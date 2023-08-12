@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FloatingPanel
 
 class CardInfoVC: BaseVC {
     
@@ -31,11 +32,30 @@ class CardInfoVC: BaseVC {
         return collectionView
     }()
     
+    private lazy var floatingPC: FloatingPanelController = {
+        let floatingPC = FloatingPanelController()
+        floatingPC.delegate = self
+        floatingPC.surfaceView.backgroundColor = .white
+        floatingPC.surfaceView.cornerRadius = 24
+        floatingPC.surfaceView.shadowHidden = true
+        return floatingPC
+    }()
+    
+    private lazy var cardInfoListVC: CardInfoFloatingVC = {
+        let vc = CardInfoFloatingVC()
+        return vc
+    }()
+    
     override func setupView() {
         super.setupView()
+        hidesBottomBarWhenPushed = true
         view.backgroundColor = UIColor(hexString: "#F6F6F9")
         view.addSubview(navigation)
         view.addSubview(collection)
+        
+        floatingPC.set(contentViewController: cardInfoListVC)
+        floatingPC.track(scrollView: cardInfoListVC.tableView)
+        floatingPC.addPanel(toParent: self, animated: false)
     }
     override func setupLabels() {
         super.setupLabels()
@@ -75,5 +95,22 @@ extension CardInfoVC: UICollectionViewDataSource, UICollectionViewDelegate, UICo
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+    }
+}
+
+// MARK: - FloatingPanelController delegate
+
+extension CardInfoVC: FloatingPanelControllerDelegate {
+    
+    func floatingPanelDidMove(_ vc: FloatingPanelController) {
+
+    }
+    
+    func floatingPanelWillBeginDragging(_ vc: FloatingPanelController) {
+        if vc.position == .tip {
+        }
+    }
+//
+    func floatingPanelDidEndDragging(_ vc: FloatingPanelController, withVelocity velocity: CGPoint, targetPosition: FloatingPanelPosition) {
     }
 }

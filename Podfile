@@ -8,7 +8,7 @@ target 'CountryApp' do
   # Pods for CountryApp
   pod 'Alamofire'
   pod 'ReachabilitySwift'
-  pod 'FloatingPanel'
+  pod 'FloatingPanel' , '~> 1.7.6'
   pod 'SDWebImage', '~> 5.0'
   pod 'SwiftMessages'
 

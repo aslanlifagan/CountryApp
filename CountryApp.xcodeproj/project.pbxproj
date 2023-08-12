@@ -13,6 +13,8 @@
 		9827C4D52A87917600EBA5D9 /* UICollectionView+ Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9827C4D42A87917600EBA5D9 /* UICollectionView+ Extension.swift */; };
 		98328D032A87BB6800D0A14F /* CardInfoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98328D022A87BB6800D0A14F /* CardInfoDetailView.swift */; };
 		98328D052A87C2FD00D0A14F /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98328D042A87C2FD00D0A14F /* UIColor+Extension.swift */; };
+		98328D072A87CC8600D0A14F /* CardInfoFloatingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98328D062A87CC8600D0A14F /* CardInfoFloatingVC.swift */; };
+		98328D092A87CF8F00D0A14F /* CardInfoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98328D082A87CF8F00D0A14F /* CardInfoListCell.swift */; };
 		CD41D6232966CF85009CEDDA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD41D6222966CF84009CEDDA /* User.swift */; };
 		CD41D6262966E89C009CEDDA /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD41D6252966E89C009CEDDA /* MainTabBarController.swift */; };
 		CD41D6282966F142009CEDDA /* CountryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD41D6272966F142009CEDDA /* CountryVC.swift */; };
@@ -54,6 +56,8 @@
 		9827C4D42A87917600EBA5D9 /* UICollectionView+ Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+ Extension.swift"; sourceTree = "<group>"; };
 		98328D022A87BB6800D0A14F /* CardInfoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoDetailView.swift; sourceTree = "<group>"; };
 		98328D042A87C2FD00D0A14F /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		98328D062A87CC8600D0A14F /* CardInfoFloatingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoFloatingVC.swift; sourceTree = "<group>"; };
+		98328D082A87CF8F00D0A14F /* CardInfoListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoListCell.swift; sourceTree = "<group>"; };
 		AAD8E4BA5154ED6F25457E02 /* Pods-CountryApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryApp.debug.xcconfig"; path = "Target Support Files/Pods-CountryApp/Pods-CountryApp.debug.xcconfig"; sourceTree = "<group>"; };
 		ADA11C921C586773E439EF65 /* Pods-CountryApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryApp.release.xcconfig"; path = "Target Support Files/Pods-CountryApp/Pods-CountryApp.release.xcconfig"; sourceTree = "<group>"; };
 		CD41D6222966CF84009CEDDA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 				9827C4CF2A87850700EBA5D9 /* CardInfoVC.swift */,
 				9827C4D22A8790D300EBA5D9 /* CardInfoCell.swift */,
 				98328D022A87BB6800D0A14F /* CardInfoDetailView.swift */,
+				98328D062A87CC8600D0A14F /* CardInfoFloatingVC.swift */,
 			);
 			path = CardInfo;
 			sourceTree = "<group>";
@@ -146,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				CD41D6302966FA8D009CEDDA /* CountryTableCell.swift */,
+				98328D082A87CF8F00D0A14F /* CardInfoListCell.swift */,
 			);
 			path = UITableViewCell;
 			sourceTree = "<group>";
@@ -452,7 +458,9 @@
 				CDF353882950DDA3009DEDFD /* Color.swift in Sources */,
 				CDF353772950CC2E009DEDFD /* DefaultsStorage.swift in Sources */,
 				CDF3535A2950C920009DEDFD /* AppDelegate.swift in Sources */,
+				98328D092A87CF8F00D0A14F /* CardInfoListCell.swift in Sources */,
 				9827C4D02A87850700EBA5D9 /* CardInfoVC.swift in Sources */,
+				98328D072A87CC8600D0A14F /* CardInfoFloatingVC.swift in Sources */,
 				CDF3536E2950C970009DEDFD /* BaseVC.swift in Sources */,
 				CD41D637296700DF009CEDDA /* CountryVM.swift in Sources */,
 				CD66EA1C2954EFAA000956C8 /* SubmitButton.swift in Sources */,
