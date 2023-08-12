@@ -10,5 +10,6 @@ target 'CountryApp' do
   pod 'ReachabilitySwift'
   pod 'FloatingPanel'
   pod 'SDWebImage', '~> 5.0'
+  pod 'SwiftMessages'
 
 end

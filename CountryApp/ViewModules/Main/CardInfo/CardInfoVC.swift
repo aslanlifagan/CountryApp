@@ -9,15 +9,16 @@ import UIKit
 
 class CardInfoVC: BaseVC {
     
-    lazy var navigation: MainNavigationBarView = {
+    private lazy var navigation: MainNavigationBarView = {
         let nav = MainNavigationBarView()
-        nav.title = "Questions"
+        nav.bgColor = UIColor(hexString: "#F6F6F9")
+        nav.title = "Card"
         return nav
     }()
     private lazy var collection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 10
+        layout.minimumInteritemSpacing = 0
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
@@ -32,6 +33,7 @@ class CardInfoVC: BaseVC {
     
     override func setupView() {
         super.setupView()
+        view.backgroundColor = UIColor(hexString: "#F6F6F9")
         view.addSubview(navigation)
         view.addSubview(collection)
     }
@@ -49,8 +51,8 @@ class CardInfoVC: BaseVC {
         collection.anchor(top: navigation.bottomAnchor,
                           leading: view.leadingAnchor,
                           trailing: view.trailingAnchor,
-                          padding: .init(top: 16, leading: 0, trailing: 0),
-                          size: .init(width: 0, height: 200))
+                          padding: .init(top: 16, leading: 0, trailing: 0))
+        collection.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.25).isActive = true
     }
 }
 
@@ -63,7 +65,11 @@ extension CardInfoVC: UICollectionViewDataSource, UICollectionViewDelegate, UICo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: CardInfoCell = collectionView.dequeue(for: indexPath)
-        cell.setupData(title: "title", desc: "Desc")
+        cell.setupData()
+        cell.onClickedCopy = { [weak self] in
+            guard let self = self else {return}
+            self.showAlert(type: .success, body: "Pan kopyalandi")
+        }
         return cell
     }
     

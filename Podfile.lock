@@ -5,12 +5,16 @@ PODS:
   - SDWebImage (5.15.8):
     - SDWebImage/Core (= 5.15.8)
   - SDWebImage/Core (5.15.8)
+  - SwiftMessages (9.0.6):
+    - SwiftMessages/App (= 9.0.6)
+  - SwiftMessages/App (9.0.6)
 
 DEPENDENCIES:
   - Alamofire
   - FloatingPanel
   - ReachabilitySwift
   - SDWebImage (~> 5.0)
+  - SwiftMessages
 
 SPEC REPOS:
   trunk:
@@ -18,13 +22,15 @@ SPEC REPOS:
     - FloatingPanel
     - ReachabilitySwift
     - SDWebImage
+    - SwiftMessages
 
 SPEC CHECKSUMS:
   Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
   FloatingPanel: 667860b0346a683f136d7048a91999b73b66907a
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SDWebImage: cb032eba469c54e0000e78bcb0a13cdde0a52798
+  SwiftMessages: f0c7ef4705a570ad6c5e208b611f4333e660ed92
 
-PODFILE CHECKSUM: efa2884a8687ba830a31929608a554a559f11594
+PODFILE CHECKSUM: 80ae5335e4c80ab12fbbf813516faced030d502c
 
 COCOAPODS: 1.12.1

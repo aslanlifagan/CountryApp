@@ -23,14 +23,14 @@ class WelcomeVC: BaseVC {
     lazy var leftSideView: UIView = {
         let view = UIView()
         view.backgroundColor = .mainOrange
-        view.roundBottomRightCorner(radius: 120)
+        view.roundBottomRightCorner(120)
         return view
     }()
     
     lazy var rightSideView: UIView = {
         let view = UIView()
         view.backgroundColor = .mainGreen
-        view.roundBottomLeftCorner(radius: 120)
+        view.roundBottomLeftCorner(120)
         return view
     }()
     

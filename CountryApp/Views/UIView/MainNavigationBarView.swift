@@ -16,7 +16,13 @@ final class MainNavigationBarView: UIView {
             textLabel.text = title
         }
     }
-        
+    
+    var bgColor: UIColor? = .mainGreen {
+        didSet {
+            contentView.backgroundColor = bgColor
+        }
+    }
+    
     lazy var contentView: UIView = {
         let view = UIView()
         view.backgroundColor = .mainGreen
@@ -26,8 +32,8 @@ final class MainNavigationBarView: UIView {
     lazy var textLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.textColor = .white
-        label.font = .systemFont(ofSize: 18, weight: .regular)
+        label.textColor = .label
+        label.font = .systemFont(ofSize: 14, weight: .semibold)
         return label
     }()
 
@@ -48,7 +54,7 @@ final class MainNavigationBarView: UIView {
         contentView.fillSuperview()
         contentView.addSubview(textLabel)
         textLabel.centerXToSuperview()
-        textLabel.anchor(bottom: contentView.bottomAnchor, padding: .init(bottom: -12))
+        textLabel.anchor(bottom: contentView.bottomAnchor, padding: .init(bottom: -4))
     }
     
     

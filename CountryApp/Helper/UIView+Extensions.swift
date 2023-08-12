@@ -218,7 +218,17 @@ public extension UIView {
     /// Set some or all corners radiuses of view.
     ///
     
-    func roundTopCorner(radius:CGFloat = 8){
+    func roundAllCorners(_ radius:CGFloat = 8) {
+        self.clipsToBounds = true
+        self.layer.cornerRadius = radius
+        if #available(iOS 11.0, *) {
+            self.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner, .layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+    
+    func roundTopCorner(_ radius:CGFloat = 8) {
         self.clipsToBounds = true
         self.layer.cornerRadius = radius
         if #available(iOS 11.0, *) {
@@ -227,7 +237,7 @@ public extension UIView {
             // Fallback on earlier versions
         }
     }
-    func roundTopLeftCorner(radius:CGFloat = 8){
+    func roundTopLeftCorner(_ radius:CGFloat = 8) {
         self.clipsToBounds = true
         self.layer.cornerRadius = radius
         if #available(iOS 11.0, *) {
@@ -236,7 +246,7 @@ public extension UIView {
             // Fallback on earlier versions
         }
     }
-    func roundTopRightCorner(radius:CGFloat = 8){
+    func roundTopRightCorner(_ radius:CGFloat = 8) {
         self.clipsToBounds = true
         self.layer.cornerRadius = radius
         if #available(iOS 11.0, *) {
@@ -245,7 +255,7 @@ public extension UIView {
             // Fallback on earlier versions
         }
     }
-    func roundTopBottomCorner(radius:CGFloat = 8){
+    func roundBottomCorner(_ radius:CGFloat = 8) {
         self.clipsToBounds = true
         self.layer.cornerRadius = radius
         if #available(iOS 11.0, *) {
@@ -254,7 +264,7 @@ public extension UIView {
             // Fallback on earlier versions
         }
     }
-    func roundBottomLeftCorner(radius:CGFloat = 8){
+    func roundBottomLeftCorner(_ radius:CGFloat = 8) {
         self.clipsToBounds = true
         self.layer.cornerRadius = radius
         if #available(iOS 11.0, *) {
@@ -263,11 +273,29 @@ public extension UIView {
             // Fallback on earlier versions
         }
     }
-    func roundBottomRightCorner(radius:CGFloat = 8){
+    func roundBottomRightCorner(_ radius:CGFloat = 8) {
         self.clipsToBounds = true
         self.layer.cornerRadius = radius
         if #available(iOS 11.0, *) {
             self.layer.maskedCorners = [.layerMaxXMaxYCorner]
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+    func roundRightCorner(_ radius:CGFloat = 8) {
+        self.clipsToBounds = true
+        self.layer.cornerRadius = radius
+        if #available(iOS 11.0, *) {
+            self.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+    func roundLeftCorner(_ radius:CGFloat = 8) {
+        self.clipsToBounds = true
+        self.layer.cornerRadius = radius
+        if #available(iOS 11.0, *) {
+            self.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
         } else {
             // Fallback on earlier versions
         }

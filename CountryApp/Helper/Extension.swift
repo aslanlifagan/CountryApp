@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import SwiftMessages
 
 /**
  * Extensions for UIApplication
@@ -591,6 +591,24 @@ extension UIViewController {
         DispatchQueue.main.async {
             activityIndicator?.stopAnimating()
             activityIndicator?.removeFromSuperview()
+        }
+    }
+    
+    func showAlert(type: Theme = .error, body: String) {
+        let alertID = "notificationAlert"
+        SwiftMessages.hide(id: alertID)
+        let errorMessage = MessageView.viewFromNib(layout: .messageView)
+        errorMessage.configureTheme(type)
+        errorMessage.id = alertID
+        errorMessage.button?.isHidden = true
+        errorMessage.configureContent(body: body)
+        errorMessage.titleLabel?.isHidden = true
+        var config = SwiftMessages.defaultConfig
+        config.presentationStyle = .top
+        DispatchQueue.main.async {
+            self.stopLoading()
+            guard !body.isEmpty else {return}
+            SwiftMessages.show(config: config, view: errorMessage)
         }
     }
 }

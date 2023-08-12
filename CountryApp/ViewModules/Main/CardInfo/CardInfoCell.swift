@@ -6,50 +6,46 @@
 //
 
 import UIKit
+import SwiftUI
 
 final class CardInfoCell: UICollectionViewCell {
     static let ID: String = "CardInfoCell"
     
-    lazy var contenView: UIView = {
+    private lazy var contenView: UIView = {
         let view = UIView()
-        view.layer.cornerRadius = 8
-        view.setupBorder(width: 1, color: .red)
-        return view
-    }()
-    lazy var iconView: UIView = {
-        let view = UIView()
-        view.layer.cornerRadius = 12
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(hexString: "#F6F6F9")
         return view
     }()
     
-    lazy var iconImage: UIImageView = {
-        let imageView = UIImageView()
-        imageView.anchorSize(.init(width: 24, height: 24))
-        return imageView
+    private lazy var cardImage: UIImageView = {
+        let img = UIImageView(image: #imageLiteral(resourceName: "cardBg"))
+//        img.alpha = 0.1
+        img.roundRightCorner(16)
+        return img
     }()
     
-    lazy var nameLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-        label.numberOfLines = 0
-        return label
+    private lazy var cardTypeImage: UIImageView = {
+        let img = UIImageView(image: #imageLiteral(resourceName: "visa_icon"))
+        return img
     }()
     
-    lazy var descLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .gray
-        label.font = UIFont.systemFont(ofSize: 12)
-        return label
-    }()
-    
-    lazy var lineView: UIView = {
+    private lazy var rightCardView: UIView = {
         let view = UIView()
-        view.backgroundColor = .gray
-        view.anchorSize(.init(width: 0, height: 1))
+        view.backgroundColor = .black
+        view.roundLeftCorner(16)
         return view
     }()
+    
+    private lazy var cardDetailView: CardInfoDetailView = {
+        let view = CardInfoDetailView()
+        view.onClickedCopy = {[weak self] in
+            guard let self = self else {return}
+            self.onClickedCopy?()
+        }
+        return view
+    }()
+    
+    var onClickedCopy: (() -> Void)?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -68,38 +64,58 @@ final class CardInfoCell: UICollectionViewCell {
         addSubview(contenView)
         contenView.fillSuperview()
         
-        contenView.addSubview(iconView)
-        iconView.anchor(top: contenView.topAnchor, leading: contenView.leadingAnchor,
-                        padding: .init(top: 8, left: 16, bottom: 0, right: 0),
-                        size: .init(width: 44, height: 44))
+        contenView.addSubview(cardImage)
+        cardImage.anchor(top: contenView.topAnchor,
+                         leading: contenView.leadingAnchor,
+                         bottom: contenView.bottomAnchor,
+                         padding: .init(top: 12, left: 0, bottom: -8, right: 0))
+        cardImage.widthAnchor.constraint(equalTo: contenView.widthAnchor, multiplier: 0.3).isActive = true
+        contenView.addSubview(cardTypeImage)
+        cardTypeImage.anchor(bottom: cardImage.bottomAnchor,
+                             trailing: cardImage.trailingAnchor,
+                             padding: .init(top: 0, left: 0, bottom: -20, right: -20))
         
-        iconView.addSubview(iconImage)
-        iconImage.centerInSuperview()
-        
-        
-        contenView.addSubview(nameLabel)
-        nameLabel.anchor(top: contenView.topAnchor, leading: iconView.trailingAnchor, trailing: contenView.trailingAnchor,
-                         padding: .init(top: 8, left: 16, bottom: 0, right: -16))
-        nameLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 24).isActive = true
-        
-        
-        contenView.addSubview(descLabel)
-        descLabel.anchor(top: nameLabel.bottomAnchor, leading: nameLabel.leadingAnchor, trailing: nameLabel.trailingAnchor,
-                          padding: .init(top: 2, left: 0, bottom: 0, right: -16))
-        descLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 22).isActive = true
-        
-        contentView.addSubview(lineView)
-        lineView.anchor(
-            leading: contentView.leadingAnchor,
-            bottom: contentView.bottomAnchor,
-            trailing: contenView.trailingAnchor,
-            padding: .init(top: 0, left: 92, bottom: 0, right: -16))
+        contenView.addSubview(rightCardView)
+        rightCardView.heightAnchor.constraint(equalTo: contenView.heightAnchor, multiplier: 0.6).isActive = true
+        rightCardView.anchor(trailing: contenView.trailingAnchor,
+                             padding: .init(top: 0, left: 0, bottom: 0, right: 0),
+                             size: .init(width: 16, height: 0))
+        rightCardView.centerYToSuperview()
+        contenView.addSubview(cardDetailView)
+        cardDetailView.heightAnchor.constraint(equalTo: contenView.heightAnchor, multiplier: 0.6).isActive = true
+        cardDetailView.anchor(leading: cardImage.trailingAnchor,
+                              trailing: rightCardView.leadingAnchor,
+                              padding: .init(top: 0, left: 16, bottom: 0, right: -16))
+        cardDetailView.centerYToSuperview()
         
     }
     
-    public func setupData(title: String, desc: String) {
-        nameLabel.text = title
-        descLabel.text = desc
+    public func setupData() {
+        cardDetailView.setupData(cardname: "Kartmane AZN",
+                                 amount: "890.00₼",
+                                 pan: "0123  4567  8901  2345",
+                                 dateTitle: "Tarix",
+                                 date: "03/27",
+                                 cvv: "CVV")
     }
 }
 
+
+@available(iOS 13.0, *)
+struct CardInfoCellViewPreview: PreviewProvider {
+    static var previews: some View {
+        CardInfoCellRepresentable()
+            .previewLayout(.sizeThatFits)
+    }
+}
+
+@available(iOS 13.0, *)
+struct CardInfoCellRepresentable: UIViewRepresentable {
+    func makeUIView(context: Context) -> CardInfoCell {
+        return CardInfoCell()
+    }
+    
+    func updateUIView(_ uiView: CardInfoCell, context: Context) {
+        // Update the view if needed
+    }
+}
