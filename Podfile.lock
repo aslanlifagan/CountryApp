@@ -1,20 +1,24 @@
 PODS:
   - Alamofire (5.6.2)
+  - FloatingPanel (2.6.6)
   - ReachabilitySwift (5.0.0)
 
 DEPENDENCIES:
   - Alamofire
+  - FloatingPanel
   - ReachabilitySwift
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - FloatingPanel
     - ReachabilitySwift
 
 SPEC CHECKSUMS:
   Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
+  FloatingPanel: 667860b0346a683f136d7048a91999b73b66907a
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
 
-PODFILE CHECKSUM: ccdc01576b33aec42d78fb15c728e6ae16c6dec7
+PODFILE CHECKSUM: bf8d58795c90cba937941f58c64d5af8d08d5f73
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.1
