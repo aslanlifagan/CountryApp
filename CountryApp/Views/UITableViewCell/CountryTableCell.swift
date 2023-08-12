@@ -81,7 +81,7 @@ final class CountryTableCell: UITableViewCell {
     func configureCell(item: CountryElement) {
         nameLabel.text = item.name?.common
         descLabel.text = item.name?.official
-        flagView.loadFrom(URLAddress: item.flags?.png ?? "")
+        flagView.loadURL(item.flags?.png ?? "")
     }
 }
 

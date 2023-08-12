@@ -9,5 +9,6 @@ target 'CountryApp' do
   pod 'Alamofire'
   pod 'ReachabilitySwift'
   pod 'FloatingPanel'
+  pod 'SDWebImage', '~> 5.0'
 
 end

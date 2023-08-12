@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 extension UIImage {
     
@@ -101,17 +102,68 @@ extension UIImage {
 
         return resized ?? self
     }
-}
-extension UIImageView {
-    func loadFrom(URLAddress: String) {
-        guard let url = URL(string: URLAddress) else {
-            return
+    
+//    static func getImage(_ name: IconName) -> UIImage? {
+//        UIImage(named: name.rawValue)
+//    }
+    
+    static func getBase64Image(base64String: String) -> UIImage {
+        if let data = Data(base64Encoded: base64String, options: .ignoreUnknownCharacters) {
+            return UIImage(data: data) ?? UIImage()
         }
-        DispatchQueue.main.async { [weak self] in
-            if let imageData = try? Data(contentsOf: url) {
-                if let loadedImage = UIImage(data: imageData) {
-                    self?.image = loadedImage
-                }
+        return UIImage()
+    }
+    
+    static func getBase64Image(_ base64String: String) -> UIImage? {
+        if let data = Data(base64Encoded: base64String, options: .ignoreUnknownCharacters) {
+            return UIImage(data: data)
+        }
+        return nil
+    }
+}
+
+extension UIImage {
+    func rotate(radians: CGFloat) -> UIImage {
+        let rotatedSize = CGRect(origin: .zero, size: size)
+            .applying(CGAffineTransform(rotationAngle: CGFloat(radians)))
+            .integral.size
+        UIGraphicsBeginImageContext(rotatedSize)
+        if let context = UIGraphicsGetCurrentContext() {
+            let origin = CGPoint(x: rotatedSize.width / 2.0,
+                                 y: rotatedSize.height / 2.0)
+            context.translateBy(x: origin.x, y: origin.y)
+            context.rotate(by: radians)
+            draw(in: CGRect(x: -origin.y, y: -origin.x,
+                            width: size.width, height: size.height))
+            let rotatedImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+
+            return rotatedImage ?? self
+        }
+
+        return self
+    }
+}
+
+extension UIImageView {
+    func loadURL(_ url: String) {
+        let urlStr = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        if let url = URL(string: urlStr) {
+            print(url)
+            sd_setImage(with: url)
+        }
+    }
+    
+    func loadWith(_ data: String) {
+        if let image = UIImage(named: data) {
+            self.image = image
+        } else if let image = UIImage.getBase64Image(data) {
+            self.image = image
+        } else {
+            let urlStr = data.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+            if let url = URL(string: urlStr) {
+                print(url)
+                sd_setImage(with: url)
             }
         }
     }

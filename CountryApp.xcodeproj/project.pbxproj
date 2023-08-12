@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3FBDA8F82D1A256CB141E30A /* Pods_CountryApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE66E34A8A6BAD0BE23D3BB /* Pods_CountryApp.framework */; };
+		9827C4D02A87850700EBA5D9 /* CardInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9827C4CF2A87850700EBA5D9 /* CardInfoVC.swift */; };
 		CD41D6232966CF85009CEDDA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD41D6222966CF84009CEDDA /* User.swift */; };
 		CD41D6262966E89C009CEDDA /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD41D6252966E89C009CEDDA /* MainTabBarController.swift */; };
 		CD41D6282966F142009CEDDA /* CountryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD41D6272966F142009CEDDA /* CountryVC.swift */; };
@@ -44,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		8EE66E34A8A6BAD0BE23D3BB /* Pods_CountryApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CountryApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9827C4CF2A87850700EBA5D9 /* CardInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoVC.swift; sourceTree = "<group>"; };
 		AAD8E4BA5154ED6F25457E02 /* Pods-CountryApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryApp.debug.xcconfig"; path = "Target Support Files/Pods-CountryApp/Pods-CountryApp.debug.xcconfig"; sourceTree = "<group>"; };
 		ADA11C921C586773E439EF65 /* Pods-CountryApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryApp.release.xcconfig"; path = "Target Support Files/Pods-CountryApp/Pods-CountryApp.release.xcconfig"; sourceTree = "<group>"; };
 		CD41D6222966CF84009CEDDA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				CD41D6292966F14D009CEDDA /* QuestionsVC.swift */,
+				9827C4CF2A87850700EBA5D9 /* CardInfoVC.swift */,
 			);
 			path = Question;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				CDF353882950DDA3009DEDFD /* Color.swift in Sources */,
 				CDF353772950CC2E009DEDFD /* DefaultsStorage.swift in Sources */,
 				CDF3535A2950C920009DEDFD /* AppDelegate.swift in Sources */,
+				9827C4D02A87850700EBA5D9 /* CardInfoVC.swift in Sources */,
 				CDF3536E2950C970009DEDFD /* BaseVC.swift in Sources */,
 				CD41D637296700DF009CEDDA /* CountryVM.swift in Sources */,
 				CD66EA1C2954EFAA000956C8 /* SubmitButton.swift in Sources */,

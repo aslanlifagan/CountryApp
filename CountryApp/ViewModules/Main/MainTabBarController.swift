@@ -33,11 +33,14 @@ final class MainTabBarC: UITabBarController {
         countryVC.tabBarItem = UITabBarItem(title: "Country", image: UIImage(systemName: "globe"), selectedImage: UIImage(systemName: "globe.fill"))
         countryVC.tabBarItem.titlePositionAdjustment = .init(horizontal: 0, vertical: -4)
         
-        let otherVC = BaseNC(rootViewController: QuestionsVC())
-        otherVC.tabBarItem = UITabBarItem(title: "Questions", image: UIImage(systemName: "questionmark.folder"), selectedImage: UIImage(systemName: "questionmark.folder.fill"))
-        otherVC.tabBarItem.titlePositionAdjustment = .init(horizontal: 0, vertical: -4)
-        
-        let controllers = [countryVC, otherVC]
+//        let otherVC = BaseNC(rootViewController: QuestionsVC())
+//        otherVC.tabBarItem = UITabBarItem(title: "Questions", image: UIImage(systemName: "questionmark.folder"), selectedImage: UIImage(systemName: "questionmark.folder.fill"))
+//        otherVC.tabBarItem.titlePositionAdjustment = .init(horizontal: 0, vertical: -4)
+        let cardInfoVC = BaseNC(rootViewController: CardInfoVC())
+        cardInfoVC.tabBarItem = UITabBarItem(title: "CardInfo", image: UIImage(systemName: "folder"), selectedImage: UIImage(systemName: "folder.fill"))
+        cardInfoVC.tabBarItem.titlePositionAdjustment = .init(horizontal: 0, vertical: -4)
+          
+        let controllers = [countryVC,/* otherVC,*/ cardInfoVC]
         self.viewControllers = controllers
     }
 }
