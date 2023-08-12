@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3FBDA8F82D1A256CB141E30A /* Pods_CountryApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EE66E34A8A6BAD0BE23D3BB /* Pods_CountryApp.framework */; };
 		9827C4D02A87850700EBA5D9 /* CardInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9827C4CF2A87850700EBA5D9 /* CardInfoVC.swift */; };
+		9827C4D32A8790D300EBA5D9 /* CardInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9827C4D22A8790D300EBA5D9 /* CardInfoCell.swift */; };
+		9827C4D52A87917600EBA5D9 /* UICollectionView+ Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9827C4D42A87917600EBA5D9 /* UICollectionView+ Extension.swift */; };
 		CD41D6232966CF85009CEDDA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD41D6222966CF84009CEDDA /* User.swift */; };
 		CD41D6262966E89C009CEDDA /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD41D6252966E89C009CEDDA /* MainTabBarController.swift */; };
 		CD41D6282966F142009CEDDA /* CountryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD41D6272966F142009CEDDA /* CountryVC.swift */; };
@@ -46,6 +48,8 @@
 /* Begin PBXFileReference section */
 		8EE66E34A8A6BAD0BE23D3BB /* Pods_CountryApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CountryApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9827C4CF2A87850700EBA5D9 /* CardInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoVC.swift; sourceTree = "<group>"; };
+		9827C4D22A8790D300EBA5D9 /* CardInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoCell.swift; sourceTree = "<group>"; };
+		9827C4D42A87917600EBA5D9 /* UICollectionView+ Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+ Extension.swift"; sourceTree = "<group>"; };
 		AAD8E4BA5154ED6F25457E02 /* Pods-CountryApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryApp.debug.xcconfig"; path = "Target Support Files/Pods-CountryApp/Pods-CountryApp.debug.xcconfig"; sourceTree = "<group>"; };
 		ADA11C921C586773E439EF65 /* Pods-CountryApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryApp.release.xcconfig"; path = "Target Support Files/Pods-CountryApp/Pods-CountryApp.release.xcconfig"; sourceTree = "<group>"; };
 		CD41D6222966CF84009CEDDA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -113,10 +117,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9827C4D12A878CDF00EBA5D9 /* CardInfo */ = {
+			isa = PBXGroup;
+			children = (
+				9827C4CF2A87850700EBA5D9 /* CardInfoVC.swift */,
+				9827C4D22A8790D300EBA5D9 /* CardInfoCell.swift */,
+			);
+			path = CardInfo;
+			sourceTree = "<group>";
+		};
 		CD41D6242966E866009CEDDA /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				CD41D6252966E89C009CEDDA /* MainTabBarController.swift */,
+				9827C4D12A878CDF00EBA5D9 /* CardInfo */,
 				CD41D634296700BC009CEDDA /* Country */,
 				CD41D635296700C4009CEDDA /* Question */,
 			);
@@ -162,7 +176,6 @@
 			isa = PBXGroup;
 			children = (
 				CD41D6292966F14D009CEDDA /* QuestionsVC.swift */,
-				9827C4CF2A87850700EBA5D9 /* CardInfoVC.swift */,
 			);
 			path = Question;
 			sourceTree = "<group>";
@@ -272,6 +285,7 @@
 				CDF353832950D282009DEDFD /* Extension.swift */,
 				CD66EA2229550B1E000956C8 /* UIImage+Extensions.swift */,
 				CD41D62D2966FA20009CEDDA /* UITableView+Extension.swift */,
+				9827C4D42A87917600EBA5D9 /* UICollectionView+ Extension.swift */,
 				CDF353852950D7A7009DEDFD /* UIView+Customs.swift */,
 				CDF353892950EB6F009DEDFD /* UIView+Extensions.swift */,
 				CDF353782950CC65009DEDFD /* Constant.swift */,
@@ -440,6 +454,7 @@
 				CDF3537B2950CF16009DEDFD /* WelcomeVC.swift in Sources */,
 				CD41D6232966CF85009CEDDA /* User.swift in Sources */,
 				CD66EA1F2954FEE6000956C8 /* RegisterVC.swift in Sources */,
+				9827C4D32A8790D300EBA5D9 /* CardInfoCell.swift in Sources */,
 				CDF353792950CC65009DEDFD /* Constant.swift in Sources */,
 				CD41D64129670421009CEDDA /* ErrorService.swift in Sources */,
 				CD41D643296705BC009CEDDA /* ResponseModel.swift in Sources */,
@@ -447,6 +462,7 @@
 				CD41D62C2966F80E009CEDDA /* MainNavigationBarView.swift in Sources */,
 				CD41D62A2966F14D009CEDDA /* QuestionsVC.swift in Sources */,
 				CD41D6312966FA8D009CEDDA /* CountryTableCell.swift in Sources */,
+				9827C4D52A87917600EBA5D9 /* UICollectionView+ Extension.swift in Sources */,
 				CD66EA212955062A000956C8 /* NavigationBarView.swift in Sources */,
 				CD41D63A296701C3009CEDDA /* NetworkManager.swift in Sources */,
 				CD41D6282966F142009CEDDA /* CountryVC.swift in Sources */,

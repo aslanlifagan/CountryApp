@@ -40,7 +40,7 @@ final class MainTabBarC: UITabBarController {
         cardInfoVC.tabBarItem = UITabBarItem(title: "CardInfo", image: UIImage(systemName: "folder"), selectedImage: UIImage(systemName: "folder.fill"))
         cardInfoVC.tabBarItem.titlePositionAdjustment = .init(horizontal: 0, vertical: -4)
           
-        let controllers = [countryVC,/* otherVC,*/ cardInfoVC]
+        let controllers = [cardInfoVC, countryVC,/* otherVC,*/ ]
         self.viewControllers = controllers
     }
 }
