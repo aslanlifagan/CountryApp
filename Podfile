@@ -8,5 +8,6 @@ target 'CountryApp' do
   # Pods for CountryApp
   pod 'Alamofire'
   pod 'ReachabilitySwift'
+  pod 'FloatingPanel'
 
 end

@@ -7,6 +7,7 @@
 
 import UIKit
 import Foundation
+import SwiftUI
 
 final class NavigationBarView: UIView {
     
@@ -71,3 +72,21 @@ final class NavigationBarView: UIView {
 }
 
 
+@available(iOS 13.0, *)
+struct NavigationBarViewPreview: PreviewProvider {
+    static var previews: some View {
+        NavigationBarViewRepresentable()
+        .previewLayout(.sizeThatFits)
+    }
+}
+
+@available(iOS 13.0, *)
+struct NavigationBarViewRepresentable: UIViewRepresentable {
+    func makeUIView(context: Context) -> NavigationBarView {
+        return NavigationBarView()
+    }
+    
+    func updateUIView(_ uiView: NavigationBarView, context: Context) {
+        // Update the view if needed
+    }
+}

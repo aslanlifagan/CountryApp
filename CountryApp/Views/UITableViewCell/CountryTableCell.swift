@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 final class CountryTableCell: UITableViewCell {
     
@@ -14,6 +15,7 @@ final class CountryTableCell: UITableViewCell {
         let label = UILabel()
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 16)
+        label.text = "Title"
         return label
     }()
     
@@ -21,6 +23,7 @@ final class CountryTableCell: UITableViewCell {
         let label = UILabel()
         label.textColor = .secondaryLabel
         label.font = UIFont.systemFont(ofSize: 12)
+        label.text = "Desc"
         return label
     }()
 
@@ -28,6 +31,7 @@ final class CountryTableCell: UITableViewCell {
         let image = UIImageView()
         image.clipsToBounds = true
         image.layer.cornerRadius = 20
+        image.image = UIImage(systemName: "circle.fill" )
         return image
     }()
     
@@ -78,5 +82,24 @@ final class CountryTableCell: UITableViewCell {
         nameLabel.text = item.name?.common
         descLabel.text = item.name?.official
         flagView.loadFrom(URLAddress: item.flags?.png ?? "")
+    }
+}
+
+@available(iOS 13.0, *)
+struct CountryTableCellViewPreview: PreviewProvider {
+    static var previews: some View {
+      CountryTableCellRepresentable()
+        .previewLayout(.sizeThatFits)
+    }
+}
+
+@available(iOS 13.0, *)
+struct CountryTableCellRepresentable: UIViewRepresentable {
+    func makeUIView(context: Context) -> CountryTableCell {
+        return CountryTableCell()
+    }
+    
+    func updateUIView(_ uiView: CountryTableCell, context: Context) {
+        // Update the view if needed
     }
 }
